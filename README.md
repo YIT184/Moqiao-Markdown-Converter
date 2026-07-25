@@ -64,7 +64,8 @@ output/
 
 ```powershell
 python -m pip install -e ".[dev]"
-powershell -ExecutionPolicy Bypass -File .\build_exe.ps1
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\build_exe.ps1
 ```
 
 产物：

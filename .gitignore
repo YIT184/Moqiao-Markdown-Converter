@@ -1,0 +1,36 @@
+# Virtual environment
+.venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Build & distribution
+build/
+dist/
+*.egg-info/
+*.spec
+
+# PyInstaller
+*.manifest
+
+# Test & temp
+tmp/
+.pytest_cache/
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# AI assistants
+.codex/

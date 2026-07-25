@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf2mdx"
+version = "1.0.0"
+description = "Local multi-format to Markdown converter with Windows GUI and CLI"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "pdf2mdx" }]
+keywords = ["pdf", "xmind", "markdown", "converter"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "PyMuPDF>=1.24.0",
+    "pywebview>=5.0",
+    "python-docx>=1.1.0",
+    "python-pptx>=1.0.0",
+    "openpyxl>=3.1.0",
+    "beautifulsoup4>=4.12.0",
+    "Pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pyinstaller>=6.0",
+]
+
+[project.scripts]
+pdf2mdx = "pdf2mdx.cli:main"
+pdf2mdx-gui = "pdf2mdx.gui:main"
+moqiao = "pdf2mdx.cli:main"
+moqiao-gui = "pdf2mdx.gui:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+pdf2mdx = ["frontend/*.html", "frontend/*.css", "frontend/*.js"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.pyinstaller]
+# hints for pyinstaller builds — the actual spec lives in pdf2mdx.spec
+console_scripts = ["pdf2mdx = pdf2mdx.cli:main"]

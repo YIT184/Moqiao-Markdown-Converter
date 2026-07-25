@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>墨桥</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><strong>墨桥</strong><span>多格式文件 → Markdown</span></div>
+      <button class="icon-button" id="openOutputTop" aria-label="打开输出目录" title="打开输出目录">
+        <svg viewBox="0 0 24 24"><path d="M3.5 7.5h6l2-2h9v13h-17z"/><path d="M3.5 9.5h17"/></svg>
+      </button>
+    </header>
+
+    <section class="drop-zone" id="dropZone" tabindex="0" role="button" aria-label="选择文件">
+      <svg class="file-plus" viewBox="0 0 48 48"><path d="M12 5h15l9 9v16M27 5v10h9M13 40h22M24 29v19M14.5 38.5h19"/></svg>
+      <h1>拖入文件，跨过格式的桥</h1>
+      <button class="text-action" id="chooseFiles">也可以选择文件</button>
+      <p>PDF · XMind · Office · HTML · CSV · TXT · JSON · XML</p>
+      <svg class="bridge-line" viewBox="0 0 1000 115" preserveAspectRatio="none"><path d="M500 20 C630 80 710 12 785 68 S900 96 995 65"/></svg>
+    </section>
+
+    <section class="queue-section" aria-label="文件队列">
+      <div class="queue-head"><span>文件名</span><span>类型</span><span>大小</span><span>状态</span><span>操作</span></div>
+      <div class="empty-queue" id="emptyQueue">尚未添加文件</div>
+      <div id="fileList" class="file-list"></div>
+    </section>
+
+    <section class="settings">
+      <div class="setting-row output-row">
+        <label for="outputPath">输出到</label>
+        <div class="path-value"><svg viewBox="0 0 24 24"><path d="M3.5 7.5h6l2-2h9v13h-17z"/></svg><input id="outputPath" aria-label="输出目录" spellcheck="false"></div>
+        <button class="secondary-button" id="chooseOutput">更改</button>
+      </div>
+      <div class="setting-row options-row">
+        <span class="row-label">转换选项</span>
+        <label class="check"><input id="tables" type="checkbox" checked><span></span>识别表格</label>
+        <label class="check"><input id="images" type="checkbox" checked><span></span>保留图片</label>
+        <label class="check"><input id="vectors" type="checkbox" checked><span></span>保留矢量图形</label>
+        <label class="password-wrap"><span>PDF 密码</span><input id="password" type="password" placeholder="可选"></label>
+        <button class="primary-button" id="convertButton">
+          <svg viewBox="0 0 24 24"><path d="m8 5 10 7-10 7z"/></svg><span>开始转换</span><i class="ripple"></i>
+        </button>
+      </div>
+    </section>
+
+    <section class="records">
+      <div class="section-title"><h2>转换记录</h2><button id="clearLogs">清空记录</button></div>
+      <div class="records-body" id="recordsBody"><div class="empty-record">转换进度和结果会显示在这里</div></div>
+    </section>
+
+    <footer>
+      <span><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 2.7 8 7 10 4.3-2 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-5"/></svg>所有处理均在本地完成</span>
+      <span id="summary">等待任务</span>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
